@@ -25,6 +25,8 @@
 * Test Design Technics
 * Miro 
 * DevTools
+* Bug reporting 
+
 
 <p align='right'>
 <img height=100 src="http://forumstatic.ru/files/0015/5e/af/56120.gif" title = "Oh, hi!"/>

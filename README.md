@@ -3,10 +3,10 @@
 <br><i> In my free time, I try to make my own game (our team consists of two people).</i>
 
 <p align='center'>
-   <a href="www.linkedin.com/in/vera-velikaia">
+   <a href="https://linkedin.com/in/vera-velikaia">
        <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
    </a>
-   <a href="[https://t.me/joinchat/SpqRPBFo_sM6qm05](https://t.me/seethehalo)">
+   <a href="https://t.me/seethehalo">
        <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/>
    </a>
 <p align='center'>

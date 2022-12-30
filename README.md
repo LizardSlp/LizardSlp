@@ -14,10 +14,6 @@
 </p>
 
 ## 🛠 Me as a character
-<p align='right'>
-<img height=100 src="http://forumstatic.ru/files/0015/5e/af/56120.gif" title = "Oh, hi!"/>
-</p>
-
 * Basic knowledge of HTML/CSS
 * Camunda Modeler
 * Jira
@@ -30,6 +26,9 @@
 * Miro 
 * DevTools
 
+<p align='right'>
+<img height=100 src="http://forumstatic.ru/files/0015/5e/af/56120.gif" title = "Oh, hi!"/>
+</p>
 
 ## 🎉 What inspires me / hobby
 * Fantasy

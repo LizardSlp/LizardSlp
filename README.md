@@ -1,5 +1,8 @@
+<p align='center'><img src="http://forumstatic.ru/files/0015/5e/af/78401.gif"/></p>
+
 # Hi, I'm Vera (or Vira).👋
-<b>L</b>et me tell you a little about myself. I'm support specialist (team leader) with two years of experience, who is quite scrupulous, but at the same time creative in solving certain situations. Looking for a position that will help me utilize my critical thinking and creativity.
+<b>L</b>et me tell you a little about myself. 
+<br>I'm support specialist (team leader) with two years of experience, who is quite scrupulous, but at the same time creative in solving certain situations. Looking for a position that will help me utilize my critical thinking and creativity.
 <br><i> In my free time, I try to make my own game (our team consists of two people).</i>
 
 <p align='center'>
@@ -14,30 +17,34 @@
 </p>
 
 ## 🛠 Me as a character
-* Basic knowledge of HTML/CSS
-* Camunda Modeler
-* Jira
-* Confluence
-* REST API (curl analysis, API testing)
-* Postman 
-* VS Code
-* Manual testing 
-* Test Design Technics
-* Miro 
-* DevTools
-* Bug reporting 
-
+🔸 Basic knowledge of HTML/CSS
+🔸 Camunda Modeler
+🔸 Jira
+🔸 Confluence
+🔸 REST API (curl analysis, API testing)
+🔸 Postman 
+🔸 VS Code
+🔸 Manual testing 
+🔸 Test Design Technics
+🔸 Miro 
+🔸 DevTools
+🔸 Bug reporting 
 
 <p align='right'>
 <img height=100 src="http://forumstatic.ru/files/0015/5e/af/56120.gif" title = "Oh, hi!"/>
 </p>
 
+## 📈 What positions at work attract me
+◻️ QA Specialist 
+◻️ QA Analyst
+◻️ Game Designer (narrative designer)
+
 ## 🎉 What inspires me / hobby
-* Fantasy
-* British humor
-* Science fiction
-* Games (PC, mobile, tabletop)
-* Dungeons & Dragons
-* Historical Medieval Battles
-* Photographing on film
-* Art
+🔹 Fantasy
+🔹 British humor
+🔹 Science fiction
+🔹 Games (PC, mobile, tabletop)
+🔹 Dungeons & Dragons
+🔹 Historical Medieval Battles
+🔹 Photographing on film
+🔹 Art

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* пикчи при наведении */
+        .clickable {
+            cursor: pointer;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            display: block;
+            font-family: 'Press Start 2P', sans-serif;
+            font-size: 7px;
+        }
+
+        #message, #show-click-info-button {
+            font-family: 'Press Start 2P', sans-serif;
+            font-size: 7px;
+        }
+
+        /* для сообщений */
+        #message {
+            position: fixed;
+            bottom: 384px;
+            right: 370px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            display: none;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap">
+</head>
+<body>
+<!-- для пикч с подсказкой -->
+<div class="clickable" style="margin-left: 10px; margin-top: 20px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<div class="clickable" style="margin-left: 50px; margin-top: 100px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<div class="clickable" style="margin-left: 150px; margin-top: 30px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<div class="clickable" style="margin-left: 200px; margin-top: 120px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<div class="clickable" style="margin-left: 80px; margin-top: 60px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<div class="clickable" style="margin-left: 30px; margin-top: 150px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<div class="clickable" style="margin-left: 180px; margin-top: 90px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<div class="clickable" style="margin-left: 120px; margin-top: 180px;">
+    <img style="display: none" src="https://forumstatic.ru/files/0015/5e/af/77625.png" data-title="Тут тыква! Нажми!">
+</div>
+
+<!-- Кнопка для режима тестирования, можно ее допилить, при это ее десигн часть -->
+<div>
+    <button id="show-click-info-button" style="position: absolute; top: 300px; left: 550px;" onmouseover="startTyping()"
+            onmouseout="stopTyping()">
+        <img src="https://forumstatic.ru/files/0015/5e/af/14141.png">
+        <span id="typing-text" style="white-space: nowrap;"></span>
+    </button>
+</div>
+
+
+<!-- просто коммент -->
+
+<!-- хтмл для сообщений -->
+<div id="message">
+    <img src="https://forumstatic.ru/files/0015/5e/af/45998.png" style="float: left; margin-right: 10px;">
+    <!-- Кнопка закрытия окна -->
+    <span id="close-button" style="position: absolute; top: 2px; right: 5px; cursor: pointer;">&times;</span>
+    <div id="message-content"></div>
+</div>
+
+<!-- Скрипт для кнопки тестирования, делает так, что наводишь и текст печатается -->
+<script type="text/javascript">
+    let typingText = "Проверим тыквы?";
+    let typingIndex = 0;
+    let typingInterval;
+    let typingTarget;
+
+    function startTyping() {
+        typingTarget = document.getElementById("typing-text");
+        typingTarget.textContent = "";
+        typingIndex = 0;
+        typingInterval = setInterval(typeNextCharacter, 100); // Интервал между печатанием букв (в миллисекундах)
+    }
+
+    function typeNextCharacter() {
+        if (typingIndex < typingText.length) {
+            typingTarget.textContent += typingText.charAt(typingIndex);
+            typingIndex++;
+        } else {
+            clearInterval(typingInterval);
+        }
+    }
+
+    function stopTyping() {
+        clearInterval(typingInterval);
+        typingTarget.textContent = "";
+    }
+
+
+</script>
+<script type="text/javascript">
+
+    // Переменные для отслеживания счетчика тыковок
+    let totalClicks = 0;
+    let dailyClicks = 0;
+    let lastClickTime = 'Never';
+    const maxTotalClicks = 20; // Максимальное количество тыковок в общем
+    const maxDailyClicks = 5;  // Максимальное количество тыковок в день
+    const userLogin = UserLogin; // Текущий пользователь. UserLogin - переменная, которой нет в этом коде, но она будет на странице в другом месте.
+
+    // Находим все элементы с классом "clickable"
+    const images = document.querySelectorAll('.clickable');
+    
+
+    // HTML-элемент для сообщений
+    const messageElement = document.getElementById('message');
+    const messageContent = document.getElementById('message-content');
+    const closeButton = document.getElementById('close-button');
+
+    // На главной ли мы?
+    if (window.location.href === 'https://sureaboutthis.anihub.me/') {
+        main();
+    }
+
+    async function main() {
+        // Если гость, то прячем тыквы и ничего не делаем
+        if(!userLogin || userLogin === ''){
+            disableAllClickables();
+            return;
+        }
+        // Загружаем счетчики из БД.
+        await getCounts(userLogin);
+
+        // Обработчик события для закрытия окна
+        closeButton.addEventListener('click', hideMessage);
+
+        // Присваиваем событие для каждой картинки
+        for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener('mouseover', showImage);
+            images[i].addEventListener('click', countClicksAndShowMessage);
+        }
+
+        // Вызываем функцию при загрузке страницы для проверки и блокировки
+        checkAndDisableClickables();
+
+        // Обработчик для кнопки
+        const showClickInfoButton = document.getElementById('show-click-info-button');
+        showClickInfoButton.addEventListener('click', showClickCountsFromLocalStorage);
+    }
+
+    // Апдейт кликов в localStorage
+    function updateClicksInLocalStorage() {
+        localStorage.setItem('totalClicks', totalClicks);
+        localStorage.setItem('dailyClicks', dailyClicks);
+        localStorage.setItem('lastClickTime', Date.now());
+    }
+
+    // Функция для отображения сообщения
+    function showMessage(message) {
+        messageContent.innerHTML = message;
+        messageElement.style.display = 'block';
+    }
+
+    // Функция для скрытия сообщения
+    function hideMessage() {
+        messageElement.style.display = 'none';
+    }
+
+    // Функция для отображения картинки при наведении
+    function showImage(event) {
+        const image = event.target.querySelector('img');
+        if (!image) return;
+        if (image.style.display === 'block') return; // Проверяем, не видна ли уже
+        image.style.display = 'block';
+
+        // Запускаем таймер для скрытия картинки через 5 секунд
+        setTimeout(hideImage, 5000, image);
+    }
+
+    // Функция для скрытия картинки
+    function hideImage(image) {
+        if (image) {
+            image.style.display = 'none';
+        }
+    }
+
+    // Функция для блокировки всех тыковок
+    function disableAllClickables() {
+        for (let i = 0; i < images.length; i++) {
+            images[i].style.display = 'none';
+        }
+    }
+
+    // Функция для проверки и блокировки тыкв при обновлении страницы
+    function checkAndDisableClickables() {
+        if (totalClicks >= maxTotalClicks || dailyClicks === maxDailyClicks) {
+            disableAllClickables();
+        }
+    }
+
+    // Функция для отображения информации о кликах из localStorage (для тестирования)
+    async function showClickCountsFromLocalStorage() {
+        await getCounts(userLogin);
+        const message = `Total Clicks: ${totalClicks}\nDaily Clicks: ${dailyClicks}\nLast Click Time: ${lastClickTime}`;
+
+        alert(message);
+    }
+
+    async function countClicksAndShowMessage(event) {
+        // Записать информацию о том, что по тыкве кликнули
+        if (markAsClicked(event.target)) return;
+
+        // Сохраняем текущую дату в localStorage
+        const today = new Date();
+        localStorage.setItem('lastClickDate', today.toDateString());
+
+        // Проверяем, если сегодняшний лимит достигнут, выводим сообщение
+        await performClick();
+
+        // Проверяем, если общий лимит достигнут, выводим сообщение и блокируем дальнейшие тыковки
+        checkClickLimitAndDisablePumpkins();
+    }
+
+    // Помечает элемент как кликанутый
+    function markAsClicked(clickedThing) {
+        let tag = clickedThing.getAttribute('tag');
+        if (tag === 'clicked') return true;
+        clickedThing.setAttribute('tag', 'clicked');
+        return false;
+    }
+
+    // Производит клик и сохраняет его в БД. Показывает сообщение.
+    async function performClick() {
+        if (dailyClicks >= maxDailyClicks) {
+            showMessage('Все тыковки на сегодня собраны! Возвращайся завтра.');
+            disableAllClickables(); // Скрываем все тыковки
+            return;
+        }
+
+        dailyClicks++; // Увеличиваем счетчик тыковок за день
+        totalClicks++;
+        // Показываем сообщение
+        showMessage(`Итак, у нас есть... сколько тыкв? Вижу, что ${dailyClicks}`);
+        //updateClicksInLocalStorage(); // Обновляем данные в localStorage
+        await saveCounts(userLogin); // Обновляем данные в БД
+    }
+
+    // Блокирует тыковки, если лимит достигнут
+    function checkClickLimitAndDisablePumpkins() {
+        if (totalClicks >= maxTotalClicks) {
+            showMessage('Поздравляю! Все тыковки собраны, напиши администратору, приложив скриншот этого текста.');
+            disableAllClickables();
+            return;
+        }
+    }
+
+    // Функция для проверки текущей даты и сброса ежедневных тыковок
+    function checkAndResetDailyClicks() {
+        const lastClickDate = localStorage.getItem('lastClickDate'); // Получаем сохраненную дату из localStorage
+        const today = new Date();
+        const todayString = today.toDateString();
+
+        if (!lastClickDate || lastClickDate !== todayString) {
+            // Если дата не сохранена или отличается от текущей даты, значит наступил следующий день
+            dailyClicks = 0; // Сбрасываем счетчик ежедневных тыковок
+            // Здесь можно также сделать все тыквы видимыми
+            for (let i = 0; i < images.length; i++) {
+                images[i].style.display = 'block';
+            }
+        }
+
+        // Обновляем дату в localStorage
+        localStorage.setItem('lastClickDate', todayString);
+    }
+
+    async function getCounts(name) {
+        const response = await fetch(getUrl(name));
+        const countsObject = await response.json();
+
+        if (!countsObject) return;
+
+        totalClicks = countsObject.TotalCount;
+        lastClickTime = countsObject.LastClickTime;
+        if (getToday() === countsObject.LastDate) {
+            dailyClicks = countsObject.LastDayCount;
+        }
+    }
+
+    async function saveCounts(name) {
+        let x = {
+            'LastDayCount': dailyClicks,
+            'TotalCount': totalClicks,
+            'LastDate': getToday(),
+            'LastClickTime': getNow(),
+        };
+        await fetch(getUrl(name), {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(x)
+        });
+    }
+
+    function getNow() {
+        return new Date().toLocaleString();
+    }
+
+    function getToday() {
+        return new Date().toISOString().split('T')[0];
+    }
+
+    function getUrl(name) {
+        return `https://pumpkinmadness-b60a9-default-rtdb.europe-west1.firebasedatabase.app/${name}.json`;
+    }
+
+</script>
+</body>
+</html>
